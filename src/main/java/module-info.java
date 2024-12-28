@@ -4,6 +4,7 @@ module com.benedict.minibank {
     requires de.jensd.fx.glyphs.commons;
     requires java.sql;
     requires org.xerial.sqlitejdbc;
+    requires java.desktop;
 
 
     opens com.benedict.minibank to javafx.fxml;
