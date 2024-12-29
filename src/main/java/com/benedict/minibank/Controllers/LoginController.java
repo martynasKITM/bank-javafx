@@ -1,7 +1,9 @@
 package com.benedict.minibank.Controllers;
 
+import com.benedict.minibank.Models.Model;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -15,5 +17,13 @@ public class LoginController implements Initializable {
     public Button login_btn;
     public Label error_lbl;
 
-    public void initialize( URL url, ResourceBundle resourceBundle ){}
+    public void initialize( URL url, ResourceBundle resourceBundle ){
+        login_btn.setOnAction(actionEvent -> onLogin());
+    }
+
+    public void onLogin(){
+        Stage stage = (Stage) error_lbl.getScene().getWindow();
+        Model.getInstance().getViewFactory().closeStage(stage);
+        Model.getInstance().getViewFactory().showClientWindow();
+    }
 }
