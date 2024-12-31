@@ -1,5 +1,6 @@
 package com.benedict.minibank.Views;
 
+import com.benedict.minibank.Controllers.Admin.AdminController;
 import com.benedict.minibank.Controllers.Client.ClientController;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -14,10 +15,18 @@ public class ViewFactory {
     private final StringProperty clientSelectedMenuItem;
     private AnchorPane dashboardView;
     private AnchorPane transactionsView;
+    private AnchorPane accountsView;
+
+    //Admin views
+    private AnchorPane createClientView;
+    private final StringProperty adminSelectedMenuItem;
 
     public ViewFactory(){
         this.clientSelectedMenuItem = new SimpleStringProperty("");
+        this.adminSelectedMenuItem = new SimpleStringProperty("");
     }
+
+    // Clients Views Section
 
     public StringProperty getClientSelectedMenuItem(){
         return clientSelectedMenuItem;
@@ -48,6 +57,19 @@ public class ViewFactory {
         return transactionsView;
     }
 
+    public AnchorPane getAccountsView(){
+        if(accountsView == null){
+            try{
+                accountsView = new FXMLLoader(getClass().getResource("/Fxml/Client/Accounts.fxml")).load();
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+
+        return accountsView;
+    }
+
     public void showLoginWindow (){
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Login.fxml"));
         createStage(loader);
@@ -57,6 +79,43 @@ public class ViewFactory {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Client/Client.fxml"));
         ClientController clientController = new ClientController();
         loader.setController(clientController);
+        createStage(loader);
+    }
+
+    // Admin Views Section
+    public StringProperty getAdminSelectedMenuItem(){
+        return adminSelectedMenuItem;
+    }
+
+    public AnchorPane getClientsView(){
+        if(accountsView == null){
+            try{
+                accountsView = new FXMLLoader(getClass().getResource("/Fxml/Client/Accounts.fxml")).load();
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+
+        return accountsView;
+    }
+
+    public AnchorPane getCreateClientView(){
+        if(createClientView == null){
+            try{
+                createClientView = new FXMLLoader(getClass().getResource("/Fxml/Client/CreateClient.fxml")).load();
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+
+        return createClientView;
+    }
+    public void showAdminWindow(){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Admin/Admin.fxml"));
+        AdminController controller = new AdminController();
+        loader.setController(controller);
         createStage(loader);
     }
 

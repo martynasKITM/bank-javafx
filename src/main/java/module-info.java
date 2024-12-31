@@ -11,6 +11,7 @@ module com.benedict.minibank {
     exports com.benedict.minibank;
     exports com.benedict.minibank.Controllers;
     exports com.benedict.minibank.Controllers.Client;
+    exports com.benedict.minibank.Controllers.Admin;
     exports com.benedict.minibank.Models;
     exports com.benedict.minibank.Views;
 }
